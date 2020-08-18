@@ -1,0 +1,34 @@
+{
+  "contacts": [
+    {
+      "id": 2,
+      "firstname": "Petro",
+      "lastname": "Petriv",
+      "phone": "0731245789"
+    },
+    {
+      "id": 4,
+      "firstname": "Vasyl",
+      "lastname": "Vasyliv",
+      "phone": "0932145678"
+    },
+    {
+      "id": 5,
+      "firstname": "Natalia",
+      "lastname": "Churylo",
+      "phone": "0984560829"
+    },
+    {
+      "id": 6,
+      "firstname": "Oleg",
+      "lastname": "Olegiv",
+      "phone": "0930101010"
+    },
+    {
+      "id": 7,
+      "firstname": "Ivan",
+      "lastname": "Ivanov",
+      "phone": "0987654321"
+    }
+  ]
+}

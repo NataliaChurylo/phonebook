@@ -1,0 +1,64 @@
+<ng-template #phoneForm>
+  <div class="modal-header">
+    <h2 class="modal-title pull-left">Add phone</h2>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input type="text" placeholder="First name goes here" class="form-control" [(ngModel)]="firstName" name="firstName">
+    <br>
+    <input type="text" placeholder="Last name goes here" class="form-control" [(ngModel)]="lastName" name="lastName">
+    <br>
+    <input type="text" placeholder="Number phone goes here" class="form-control" [(ngModel)]="phoneNumber" name="phoneNumber">
+  </div>
+  <div class="modal-footer pull-right">
+    <button class="btn btn-primary" (click)="addContact()">Save</button>
+  </div>
+</ng-template>
+
+
+<div class="container">
+    <h1>My phone book!</h1>
+    <hr>
+
+    <form class="form-group task-add">
+        <input type="text" class="col-10 form-control input-name" placeholder="Search text goes here" [(ngModel)]="searchData" name="searchData" (keyup)='applyFilter($event.target.value)'>
+        <button type="button" class="btn btn-success ml-2 col-2 form-control add" (click)="openModal(phoneForm)">Add phone</button>
+    </form>
+
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 container table-hover">
+
+      <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </th>
+        <td mat-cell *matCellDef="let contacts"> {{contacts.firstname}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </th>
+        <td mat-cell *matCellDef="let contacts"> {{contacts.lastname}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+        <td mat-cell *matCellDef="let contacts"> {{contacts.phone}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let contacts">
+          <button type="button" class="btn btn-warning" (click)="openModal(phoneForm, contacts)"> Edit </button>
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Delete</th>
+        <td mat-cell *matCellDef="let contacts">
+          <button type="button" class="btn btn-danger" (click)="deleteContact(contacts)"> Delete </button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>   
+</div>
